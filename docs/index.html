@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AppMovies</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <form id="formSearch">
+      <input type="text" id="search" class="tags" placeholder="Your research ..." />
+      <div class="plex">
+      <select id="select">
+        <option value="movie">Films</option>
+        <option value="series">Series</option>
+        <option value="episode">Episodes</option>
+      </select>
+    </form>
+    <button class="butt">&#x1F50E;</button>
+  </div>
+    <div id="space">
+      <img src="./img/MIB.jpg" alt="nouveautés" id="effet" />
+    </div>
+    <div id="accordion">
+      <h2><a href="#">Ce que j'ai utilisé</a></h2>
+      <div>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>Requête AJAX</li>
+          <li>Le DOM et la gestion des événements</li>
+          <li>CSS Grid</li>
+          <li>Initiation à JQuery</li>
+          <li>Déploiement de l'application avec Netlify</li>
+        </ul>
+      </div>
+      <h2><a href="#">Ce que j'ai réalisé</a></h2>
+      <div>
+        <ul>
+          <li>
+            Contenu de la page avec barre de recherches et choix multiples
+          </li>
+          <li>Parer à toutes les conditions</li>
+          <ul>
+            <li>Erreur dans la saisie</li>
+            <li>Pas de saisie</li>
+            <li>Clé API invalide</li>
+            <li>Image manquante</li>
+          </ul>
+          <li>Appel à l'API Web de oMDB</li>
+          <li>Affichage du résultat</li>
+          <li>Détails du film avec un modal</li>
+          <li>Design du site</li>
+          <li>Site responsive</li>
+        </ul>
+      </div>
+      <h2><a href="#">L'amélioration et ce qui reste à venir</a></h2>
+      <div>
+        <ul>
+          <li>Initiation à VueJS</li>
+        </ul>
+      </div>
+    </div>
+    <div id="movieList"></div>
+    <div id="modal">
+      <div id="modal-body">
+        <span class="close">&times;</span>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

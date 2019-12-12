@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #FF573E;
+            animation: colorchange 20s;
+            animation-iteration-count: 300;
+            -webkit-animation: colorchange 20s;
+            -webkit-animation-iteration-count: 300;
+        }
+
+        @keyframes colorchange {
+            0% {
+                background: #ACF39D;
+            }
+
+            50% {
+                background: #9CFFFA;
+            }
+
+            100% {
+                background: rgb(129, 228, 138);
+            }
+        }
+
+        @-webkit-keyframes colorchange {
+            0% {
+                background: #ACF39D;
+            }
+
+            50% {
+                background: #9CFFFA;
+            }
+
+            100% {
+                background: rgb(129, 228, 138);
+            }
+        }
+
+        table,
+        th {
+            border: 1px solid black;
+            color: blue;
+            font-weight: 800;
+            font-size: 25px;
+        }
+
+        table {
+            width: 80%;
+            height: 500px;
+            margin: 10%;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+        }
+
+        h2 {
+            text-align: center;
+            color: blue;
+        }
+
+        h3 {
+            text-align: center;
+            color: green;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .block {
+            display: block;
+        }
+
+        button {
+            margin-left: 45%;
+        }
+
+        .plex {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+        }
+
+        #doute {
+            margin-left: 45%;
+            color: teal;
+        }
+
+        #carte1,
+        #carte2,
+        #carte3,
+        #carte4,
+        #carte5,
+        #calc1,
+        #calc2,
+        #calc3,
+        #calc4,
+        #calc5 {
+            margin-left: 30%;
+        }
+
+        @media screen and (max-width: 768px){
+            #carte1,
+        #carte2,
+        #carte3,
+        #carte4,
+        #carte5,
+        #calc1,
+        #calc2,
+        #calc3,
+        #calc4,
+        #calc5 {
+            margin-left: 10%;
+        }
+        tbody{
+            width: 80%;
+        }
+}
+    </style>
+</head>
+
+<body>
+    <div id="buddy">
+        <h1>Bienvenue dans ce petit tour de magie !</h1>
+        <h2>Mémorisez un chiffre entre 1 et 30</h2>
+        <h3>Gardez-le secret et laissez vous guider</h3>
+        <h3>Je vais essayer de le deviner</h3>
+        <button class="centr" onclick="show()">Cliquez pour commencer</button>
+    </div>
+    <div id="carte1" class="none">
+        <table>
+            <tr>
+                <th id="1">16</th>
+                <th>17</th>
+                <th>18</th>
+            </tr>
+            <tr>
+                <th>19</th>
+                <th>20</th>
+                <th>21</th>
+            </tr>
+            <tr>
+                <th>22</th>
+                <th>23</th>
+                <th>24</th>
+            </tr>
+            <tr>
+                <th>25</th>
+                <th>26</th>
+                <th>27</th>
+            </tr>
+            <tr>
+                <th>28</th>
+                <th>29</th>
+                <th>30</th>
+            </tr>
+        </table>
+        <div id="calc1" class="none">
+            <div class="plex">
+                <p>Le chiffre est-il dans cette table ?</p>
+                <button onclick="ajout(1)">Oui</button>
+                <button onclick="pass(1)">Non</button>
+            </div>
+        </div>
+    </div>
+    <div id="carte2" class="none">
+        <table>
+            <tr>
+                <th id="2">2</th>
+                <th>3</th>
+                <th>6</th>
+            </tr>
+            <tr>
+                <th>7</th>
+                <th>10</th>
+                <th>11</th>
+            </tr>
+            <tr>
+                <th>14</th>
+                <th>15</th>
+                <th>18</th>
+            </tr>
+            <tr>
+                <th>19</th>
+                <th>22</th>
+                <th>23</th>
+            </tr>
+            <tr>
+                <th>26</th>
+                <th>27</th>
+                <th>30</th>
+            </tr>
+        </table>
+        <div id="calc2" class="none">
+            <div class="plex">
+                <p>Le chiffre est-il dans cette table ?</p>
+                <button onclick="ajout(2)">Oui</button>
+                <button onclick="pass(2)">Non</button>
+            </div>
+        </div>
+    </div>
+    <div id="carte3" class="none">
+        <table>
+            <tr>
+                <th id="3">4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+            <tr>
+                <th>7</th>
+                <th>12</th>
+                <th>13</th>
+            </tr>
+            <tr>
+                <th>14</th>
+                <th>15</th>
+                <th>20</th>
+            </tr>
+            <tr>
+                <th>21</th>
+                <th>22</th>
+                <th>23</th>
+            </tr>
+            <tr>
+                <th>28</th>
+                <th>29</th>
+                <th>30</th>
+            </tr>
+        </table>
+        <div id="calc3" class="none">
+            <div class="plex">
+                <p>Le chiffre est-il dans cette table ?</p>
+                <button onclick="ajout(3)">Oui</button>
+                <button onclick="pass(3)">Non</button>
+            </div>
+        </div>
+    </div>
+    <div id="carte4" class="none">
+        <table>
+            <tr>
+                <th id="4">1</th>
+                <th>3</th>
+                <th>5</th>
+            </tr>
+            <tr>
+                <th>7</th>
+                <th>9</th>
+                <th>11</th>
+            </tr>
+            <tr>
+                <th>13</th>
+                <th>15</th>
+                <th>17</th>
+            </tr>
+            <tr>
+                <th>19</th>
+                <th>21</th>
+                <th>23</th>
+            </tr>
+            <tr>
+                <th>25</th>
+                <th>27</th>
+                <th>29</th>
+            </tr>
+        </table>
+        <div id="calc4" class="none">
+            <div class="plex">
+                <p>Le chiffre est-il dans cette table ?</p>
+                <button onclick="ajout(4)">Oui</button>
+                <button onclick="pass(4)">Non</button>
+            </div>
+        </div>
+    </div>
+    <div id="carte5" class="none">
+        <table>
+            <tr>
+                <th id="5">8</th>
+                <th>9</th>
+                <th>10</th>
+            </tr>
+            <tr>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+            </tr>
+            <tr>
+                <th>14</th>
+                <th>15</th>
+                <th>24</th>
+            </tr>
+            <tr>
+                <th>25</th>
+                <th>26</th>
+                <th>27</th>
+            </tr>
+            <tr>
+                <th>28</th>
+                <th>29</th>
+                <th>30</th>
+            </tr>
+        </table>
+        <div id="calc5" class="none">
+            <div class="plex">
+                <p>Le chiffre est-il dans cette table ?</p>
+                <button onclick="ajout(5)">Oui</button>
+                <button onclick="pass(5)">Non</button>
+            </div>
+        </div>
+    </div>
+    <div id="doute" class="none">
+        <div class="plex">
+            <p>Un doute ? Vous voulez réessayer ?</p>
+            <button onclick="retry()">Nouveau Tour</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        tab = [];
+        x = 2;
+        var somme = 0;
+        var carte1 = document.getElementById("carte1");
+        function show() {
+            var buddy = document.getElementById("buddy");
+            buddy.innerHTML = "";
+            carte1.className = "block";
+            var calc = document.getElementById("calc1");
+            calc.className = "block";
+        }
+
+        function ajout(i) {
+            var t = document.getElementById(i).textContent;
+            var w = document.getElementById("carte" + x);
+            var calcf = document.getElementById("calc" + i);
+            t = Number(t);
+            tab.push(t);
+            var z = document.getElementById("carte" + i);
+            var q = document.getElementById("calc" + x)
+            z.className = "none";
+            calcf.className = "none";
+            console.log(tab);
+            if (x == 6) {
+                for (i = 0; i < tab.length; i++) {
+                    somme = somme + tab[i];
+                    console.log(somme);
+                }
+                alert("votre chiffre est le " + somme);
+                var f = document.getElementById("doute");
+                f.className = "block";
+                return
+            }
+            x++;
+            w.className = "block";
+            q.className = "block";
+            console.log(x);
+        }
+
+        function pass(i) {
+            var w = document.getElementById("carte" + x);
+            var calcf = document.getElementById("calc" + i);
+            var z = document.getElementById("carte" + i);
+            var q = document.getElementById("calc" + x)
+            z.className = "none";
+            calcf.className = "none";
+            console.log(tab);
+            if (x == 6) {
+                for (i = 0; i < tab.length; i++) {
+                    somme = somme + tab[i];
+                    console.log(somme);
+                }
+                alert("votre chiffre est le " + somme);
+                var f = document.getElementById("doute");
+                f.className = "block";
+                return
+            }
+            x++;
+            w.className = "block";
+            q.className = "block";
+            console.log(x);
+        }
+        function retry() {
+            window.location.reload()
+        }
+
+    </script>
+</body>
+
+</html>

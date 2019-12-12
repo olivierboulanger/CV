@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Rock+Salt&display=swap" rel="stylesheet">
+    <title>Morpion</title>
+    <style>
+        .none {
+            display: none;
+        }
+
+        .flox {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        body {
+
+            background-image: url('https://www.zupimages.net/up/19/35/nx0m.jpg')
+        }
+
+        /*
+
+        .cont {
+            width: 100%;
+            height: 100%;
+        } */
+
+        .titr {
+            font-family: 'Rock Salt', cursive;
+            padding-top: 2%;
+            padding-left: 40%;
+            font-size: 200%;
+            font-weight: bold;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .titr {
+                padding-left: 20%;
+            }
+            .main {
+            width: 80%;
+            height: 400px;
+        }
+        }
+
+        .main {
+            display: flex;
+            width: 100%;
+            height: 700px;
+            margin: 2% auto;
+            padding: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+
+        .case {
+            width: 32.2%;
+            height: 33.8%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case1 {
+            border-right: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+
+        .case2 {
+            border-right: 5px solid black;
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+
+        .case3 {
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+
+        .case4 {
+            border-top: 5px solid black;
+            border-right: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+
+        .case5 {
+            border: 5px solid black;
+        }
+
+        .case6 {
+            border-top: 5px solid black;
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+
+        .case7 {
+            border-top: 5px solid black;
+            border-right: 5px solid black;
+        }
+
+        .case8 {
+            border-left: 5px solid black;
+            border-top: 5px solid black;
+            border-right: 5px solid black;
+        }
+
+        .case9 {
+            border-left: 5px solid black;
+            border-top: 5px solid black;
+        }
+
+        .obj1 {
+            font-family: 'Rock Salt', cursive;
+            color: rgb(94, 9, 9);
+            margin: 0;
+            padding: 0;
+            font-size: 500%;
+        }
+
+        .obj2 {
+            font-family: 'Rock Salt', cursive;
+            color: rgb(19, 19, 85);
+            margin: 0;
+            padding: 0;
+            font-size: 500%;
+        }
+
+        .winBox1 {
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            background-image: url('https://www.zupimages.net/up/19/35/nx0m.jpg');
+            background-size: cover;
+            border: 5px dashed rgb(94, 9, 9);
+            box-shadow: 10px 10px 20px black;
+            border-radius: 10%;
+            transform: rotate(20deg);
+            text-align: center;
+        }
+
+        .winBox2 {
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            background-image: url('https://www.zupimages.net/up/19/35/nx0m.jpg');
+            background-size: cover;
+            border: 5px dashed rgb(19, 19, 85);
+            box-shadow: 10px 10px 20px black;
+            border-radius: 10%;
+            transform: rotate(-20deg);
+            text-align: center;
+        }
+
+        #gagnant {
+            padding: 3%;
+            font-family: 'Caveat Brush', cursive;
+            font-size: 350%;
+        } 
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 class="titr">MORPION</h2>
+            <div class="main">
+                <div class="case case1" id="1" onclick="afficher(1)"></div>
+                <div class="case case2" id="2" onclick="afficher(2)"></div>
+                <div class="case case3" id="3" onclick="afficher(3)"></div>
+                <div class="case case4" id="4" onclick="afficher(4)"></div>
+                <div class="case case5" id="5" onclick="afficher(5)"></div>
+                <div class="case case6" id="6" onclick="afficher(6)"></div>
+                <div class="case case7" id="7" onclick="afficher(7)"></div>
+                <div class="case case8" id="8" onclick="afficher(8)"></div>
+                <div class="case case9" id="9" onclick="afficher(9)"></div>
+            </div>
+            <div class="winBox1 none" id="poly">
+                <p id="gagnant"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var x = 1;
+        tab1 = [];
+        tab2 = [];
+        tab = [];
+        function afficher(i) {
+            if (x % 2 == 0) {
+                var choix = document.getElementById(i);
+                console.log(tab1)
+                if (tab.indexOf(i) != -1) {
+                    alert("case déjà joué");
+                    return
+                }
+                tab1.push(i);
+                tab.push(i);
+                console.log("tableau total : " + tab);
+                var croix = document.createElement("p");
+                croix.className = "obj1";
+                croix.textContent = "X";
+                choix.appendChild(croix);
+                console.log("pair : X");
+                var PLG01 = document.getElementById("poly");
+                if ((tab1.indexOf(1) != -1) && (tab1.indexOf(2) != -1) && (tab1.indexOf(3) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+
+                }
+                else if ((tab1.indexOf(4) != -1) && (tab1.indexOf(5) != -1) && (tab1.indexOf(6) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab1.indexOf(7) != -1) && (tab1.indexOf(8) != -1) && (tab1.indexOf(9) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab1.indexOf(1) != -1) && (tab1.indexOf(4) != -1) && (tab1.indexOf(7) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab1.indexOf(2) != -1) && (tab1.indexOf(5) != -1) && (tab1.indexOf(8) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab1.indexOf(3) != -1) && (tab1.indexOf(6) != -1) && (tab1.indexOf(9) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab1.indexOf(1) != -1) && (tab1.indexOf(5) != -1) && (tab1.indexOf(9) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab1.indexOf(3) != -1) && (tab1.indexOf(5) != -1) && (tab1.indexOf(7) != -1)) {
+                    PLG01.className = "winBox1 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 2 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else {
+                    x++;
+                    console.log(x);
+                    if (x == 10) {
+                        PLG01.className = "winBox1 flox";
+                        document.getElementById("gagnant").textContent = "Match Nul";
+                        setTimeout(function () {
+                            window.location.reload()
+                        }, 2000);
+                    }
+                    return
+                }
+            }
+            else {
+                var choix = document.getElementById(i);
+                if (tab.indexOf(i) != -1) {
+                    alert("case déjà joué");
+                    return
+                }
+                tab2.push(i);
+                tab.push(i);
+                console.log("tableau total : " + tab);
+                var croix = document.createElement("p");
+                croix.className = "obj2";
+                croix.textContent = "O";
+                choix.appendChild(croix);
+                console.log("impair : O");
+                var PLG01 = document.getElementById("poly");
+                if ((tab2.indexOf(1) != -1) && (tab2.indexOf(2) != -1) && (tab2.indexOf(3) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(4) != -1) && (tab2.indexOf(5) != -1) && (tab2.indexOf(6) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(7) != -1) && (tab2.indexOf(8) != -1) && (tab2.indexOf(9) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(1) != -1) && (tab2.indexOf(4) != -1) && (tab2.indexOf(7) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(2) != -1) && (tab2.indexOf(5) != -1) && (tab2.indexOf(8) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(3) != -1) && (tab2.indexOf(6) != -1) && (tab2.indexOf(9) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(1) != -1) && (tab2.indexOf(5) != -1) && (tab2.indexOf(9) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else if ((tab2.indexOf(3) != -1) && (tab2.indexOf(5) != -1) && (tab2.indexOf(7) != -1)) {
+                    PLG01.className = "winBox2 flox";
+                    document.getElementById("gagnant").textContent = "Le joueur 1 a gagné";
+                    setTimeout(function () {
+                        window.location.reload()
+                    }, 2000);
+                }
+                else {
+                    x++;
+                    console.log(x);
+                    if (x == 10) {
+                        PLG01.className = "winBox1 flox";
+                        document.getElementById("gagnant").textContent = "Match Nul";
+                        setTimeout(function () {
+                            window.location.reload()
+                        }, 2000);
+                    }
+                    return
+                }
+            }
+            x++;
+        }
+    </script>
+</body>
+
+</html>
